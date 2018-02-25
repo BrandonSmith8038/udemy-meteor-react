@@ -1,7 +1,21 @@
-//import './../imports/utils.js'
-import someDefault from './../imports/utils.js'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Meteor } from 'meteor/meteor'
 
-
-
-console.log('Log from /client/main.js')
-console.log(someDefault)
+Meteor.startup(function() {
+  const name = 'Mike'
+  const title = 'Account Settings'
+  
+  const jsx =(
+  <div>
+    <h1>{title}</h1>
+    <p>Hello {name}!</p>
+    <p>This is my second paragraph.</p>
+  </div>
+  )
+    
+ 
+  
+  
+  ReactDOM.render(jsx, document.getElementById('app'))
+})
