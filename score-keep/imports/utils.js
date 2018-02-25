@@ -5,3 +5,6 @@ export const greetUser = function(){
 }
 
 export const name = 'Brandon Smith'
+
+
+export default 'Default Val'

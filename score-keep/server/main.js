@@ -1,6 +1,6 @@
 //import './../imports/utils.js'
 import { greetUser } from './../imports/utils'
-import { add } from './../imports/math'
+import add  from './../imports/math'
 
 
 
