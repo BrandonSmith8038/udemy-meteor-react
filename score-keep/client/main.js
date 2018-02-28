@@ -17,7 +17,7 @@ const players = [
   {
     _id: '3',
     name: 'Andrew',
-    score: -12,
+    score: -112,
   }
   ]
   
