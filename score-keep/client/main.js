@@ -9,7 +9,9 @@ Meteor.startup(() => {
   Tracker.autorun(() => {
     const players = Players.find().fetch()
     
-    const renderPlayers = players => players.map(player => <p key={player._id}>{player.name} has {player.score} points(s)</p>)
+    const renderPlayers = players => players.map(player => {
+      return <p key={player._id}>{player.name} has {player.score} points(s)</p>
+    })
     
     const handleSubmit = e => {
       
