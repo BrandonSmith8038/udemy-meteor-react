@@ -10,7 +10,12 @@ Meteor.startup(() => {
     const players = Players.find().fetch()
     
     const renderPlayers = players => players.map(player => {
-      return <p key={player._id}>{player.name} has {player.score} points(s)</p>
+      return (
+        <p key={player._id}>
+          {player.name} has {player.score} points(s)
+          <button onClick={() => Players.remove({_id: player._id})}>X</button>
+        </p>
+      ) 
     })
     
     const handleSubmit = e => {
@@ -29,14 +34,11 @@ Meteor.startup(() => {
         e.preventDefault()
     }
     
-    const name = 'Mike'
-    const title = 'Account Settings'
+    const title = 'Score Keep'
   
     const jsx =(
     <div>
       <h1>{title}</h1>
-      <p>Hello {name}!</p>
-      <p>This is my second paragraph.</p>
       {renderPlayers(players)}
       <form onSubmit={handleSubmit}>
       <input type="text" placeholder="Player Name" name="playerName"/>
