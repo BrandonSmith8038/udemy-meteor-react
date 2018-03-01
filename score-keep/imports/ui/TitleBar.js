@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom'
 
 export default class TitleBar extends React.Component{
   renderSubTitle(){
-    if(this.props.subTitle){
-      <h3>{this.props.subtitle}</h3>
+    if(this.props.subtitle){
+      return <h3 className="title-bar__subtitle">{this.props.subtitle}</h3>
     }
   }
   
