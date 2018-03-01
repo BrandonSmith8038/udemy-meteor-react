@@ -7,18 +7,12 @@ import { Players } from './../imports/api/players'
 
 import TitleBar from './../imports/ui/TitleBar'
 import AddPlayer from './../imports/ui/AddPlayer'
-import Player from './../imports/ui/Player'
+import PlayerList from './../imports/ui/PlayerList'
 
 
 Meteor.startup(() => {
   Tracker.autorun(() => {
     const players = Players.find().fetch()
-    
-    const renderPlayers = players => players.map(player => {
-      return <Player key={player._id} player={player}/>
-    })
-    
-    
     
     const title = 'Score Keep'
   
@@ -28,7 +22,7 @@ Meteor.startup(() => {
         title={title}
         subtitle='Created By Brandon Smith'
       />
-      {renderPlayers(players)}
+      <PlayerList players={players}/>
       <AddPlayer/>
     </div>
     
