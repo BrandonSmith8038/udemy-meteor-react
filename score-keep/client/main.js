@@ -29,21 +29,7 @@ Meteor.startup(() => {
       ) 
     })
     
-    const handleSubmit = e => {
-      
-      const playerName = e.target.playerName.value
-      if(playerName){
-        
-        Players.insert({
-        name: playerName,
-        score: 0
-        })
-        
-        e.target.playerName.value = ''
-          
-        }
-        e.preventDefault()
-    }
+    
     
     const title = 'Score Keep'
   
@@ -55,10 +41,6 @@ Meteor.startup(() => {
       />
       {renderPlayers(players)}
       <AddPlayer/>
-      <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="Player Name" name="playerName"/>
-      <button>Add Player</button>
-      </form>
     </div>
     
     )
