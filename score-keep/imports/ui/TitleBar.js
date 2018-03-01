@@ -2,11 +2,17 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 export default class TitleBar extends React.Component{
+  renderSubTitle(){
+    if(this.props.subTitle){
+      <h3>{this.props.subtitle}</h3>
+    }
+  }
+  
   render(){
     return (
       <div>
         <h1>{this.props.title}</h1>
-        <h3>{this.props.subtitle}</h3>
+        {this.renderSubTitle()}
       </div>
     )
   }
@@ -14,7 +20,6 @@ export default class TitleBar extends React.Component{
 
 TitleBar.propTypes = {
   title: React.PropTypes.string.isRequired,
-  subtitle: React.PropTypes.string.isRequired
 }
 
 TitleBar.defaultProps = {

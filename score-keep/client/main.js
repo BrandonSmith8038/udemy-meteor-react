@@ -3,33 +3,19 @@ import ReactDOM from 'react-dom'
 import { Meteor } from 'meteor/meteor'
 import { Tracker } from 'meteor/tracker'
 
+//Players Collection in the Databse
 import { Players } from './../imports/api/players'
 
-import TitleBar from './../imports/ui/TitleBar'
-import AddPlayer from './../imports/ui/AddPlayer'
-import PlayerList from './../imports/ui/PlayerList'
-
+import App from './../imports/ui/App'
 
 Meteor.startup(() => {
   Tracker.autorun(() => {
+    
+    //Fetch List Of Players In The Database
     const players = Players.find().fetch()
     
     const title = 'Score Keep'
-  
-    const jsx =(
-    <div>
-      <TitleBar 
-        title={title}
-        subtitle='Created By Brandon Smith'
-      />
-      <PlayerList players={players}/>
-      <AddPlayer/>
-    </div>
-    
-    )
-      
-    ReactDOM.render(jsx, document.getElementById('app'))
+
+    ReactDOM.render(<App title={title} players={players}/>, document.getElementById('app'))
     })
-    
-    
 })
