@@ -8,7 +8,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <TitleBars title={this.props.title} subtitle="Created by Andrew Mead"/>
+        <TitleBar title={this.props.title} subtitle="Created by Andrew Mead"/>
         <div className="wrapper">
           <PlayerList players={this.props.players}/>
           <AddPlayer/>
