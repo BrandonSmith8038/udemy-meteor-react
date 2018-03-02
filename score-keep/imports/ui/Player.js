@@ -14,7 +14,7 @@ export default class Player extends React.Component{
               {this.props.player.name}
             </h3>
             <p className="player__stats">
-              {this.props.player.score} points(s)
+              {this.props.player.rank} {this.props.player.position} {this.props.player.score} points(s)
             </p>
           </div>
           <div className="player__actions">
