@@ -22,11 +22,7 @@ export default class Signup extends React.Component{
       email,
       password
     }, err => {
-      console.log('Signup Callback', e)
-    })
-    
-    this.setState({
-      error: 'Something Went Wrong'
+      err ? this.setState({error: err.reason}) : this.setState({error: ''})
     })
   }
   
