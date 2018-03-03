@@ -5,6 +5,6 @@ export const Links = new Mongo.Collection('links')
 
 if(Meteor.isServer){
   Meteor.publish('links', () => {
-    return Links.find({ url: '2' })
+    return Links.find({ userId: Meteor.userId() })
   })
 }
