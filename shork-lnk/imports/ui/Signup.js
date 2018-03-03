@@ -34,7 +34,7 @@ export default class Signup extends React.Component{
   render(){
     return(
       <div>
-        <p>Signup Form Here</p>
+        <h1>Join Short Lnk</h1>
         
         <p>{this.state.count}</p>
         
