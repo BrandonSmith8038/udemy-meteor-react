@@ -1,12 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { browserHistory } from 'react-router'
-
+import { Accounts } from 'meteor/accounts-base'
 
 export default class Link extends React.Component {
   
   onLogout(){
-    return browserHistory.push('/')
+    Accounts.logout()
   }
   
   render(){
