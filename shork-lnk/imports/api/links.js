@@ -11,5 +11,13 @@ if(Meteor.isServer){
 
 
 Meteor.methods({
-  
+  'links.insert'(url){
+    if(!this.userId){
+      throw new Meteor.Error('Not Authorized')
+    }
+    Links.insert({
+      url,
+      userId: this.userId
+    })
+  }
 })
