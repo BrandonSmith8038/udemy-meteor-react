@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor'
 import { Tracker } from 'meteor/tracker'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import '../imports/startup/simple-schema-configuration'
 
 
 Tracker.autorun(() => {
