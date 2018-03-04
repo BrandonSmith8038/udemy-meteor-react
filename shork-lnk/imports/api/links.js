@@ -8,3 +8,8 @@ if(Meteor.isServer){
     return Links.find({ userId: Meteor.userId() })
   })
 }
+
+
+Meteor.methods({
+  
+})

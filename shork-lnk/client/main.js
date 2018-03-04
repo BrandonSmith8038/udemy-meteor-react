@@ -14,5 +14,17 @@ Tracker.autorun(() => {
 
 
 Meteor.startup(() => {
+  /*Meteor.call('greetUser',(err, res) => {
+    console.log('GreetUser Arguments', err, res)
+  })*/
+  
+  Meteor.call('addNumbers', 14, 'Two', (err, res) => {
+    if(err){
+      console.log(err.message)
+    } else {
+      console.log('Add Numbers: ', res)
+    }
+  })
+  
   ReactDOM.render(routes, document.getElementById('app'))
 })
