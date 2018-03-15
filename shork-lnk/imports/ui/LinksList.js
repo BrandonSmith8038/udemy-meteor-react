@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor'
 import { Tracker } from 'meteor/tracker'
 
 
+import LinkListItem from './LinkListItem'
 import { Links } from '../api/links'
 
 export default class LinksList extends React.Component {
@@ -34,9 +35,10 @@ export default class LinksList extends React.Component {
   
   renderLinksListItems() {
     return this.state.links.map((link, index) => {
-      return (
-        <p key={link._id}>{link.url}</p>  
-      )
+      //const shortUrl = Meteor.absoluteUrl(link._id)
+      //Meteor.absoluteUrl is returning 0.0.0.0:8080
+      const shortUrl = `https://udemy-meteor-react-cowboy8038.c9users.io/${link._id}`
+      return <LinkListItem key={link._id} {...link} shortUrl={shortUrl}/>
     })  
   }
   
