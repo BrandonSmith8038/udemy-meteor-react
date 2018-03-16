@@ -41,8 +41,10 @@ export default class AddLink extends React.Component {
   render(){
     return (
       <div>
-        <button onClick={() => this.setState({isOpen: true})}>
-          Add Link
+        <button
+          className="button"
+          onClick={() => this.setState({isOpen: true})}>
+            + Add Link
         </button>
         <Modal
           isOpen={this.state.isOpen}
