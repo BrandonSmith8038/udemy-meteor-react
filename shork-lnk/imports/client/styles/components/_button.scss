@@ -29,3 +29,11 @@
   color: $button-pill-color;
   padding: .3rem .8rem;
 }
+
+.button--link-text {
+  background: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: underline;
+  text-transform: none;
+}
