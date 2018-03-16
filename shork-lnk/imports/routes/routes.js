@@ -25,7 +25,6 @@ const onEnterPrivatePage = () => {
 
 export const onAuthChange = (isAuthenticated) => {
   const pathName = browserHistory.getCurrentLocation().pathname
-  
   const isUnauthenticatedPage = unAuthenticatedPages.includes(pathName)
   const isAuthenticatedPage = authenticatedPages.includes(pathName)
   
@@ -34,8 +33,6 @@ export const onAuthChange = (isAuthenticated) => {
   } else if(isAuthenticatedPage && !isAuthenticated){
     browserHistory.replace('/')
   }
-  
-  console.log(isAuthenticated)
 }
 
 export const routes = (
