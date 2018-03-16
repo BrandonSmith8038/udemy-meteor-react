@@ -15,6 +15,14 @@
   text-decoration: none;
 }
 
+.button--secondary{
+  color: $button-secondary-color;
+  background: $button-secondary-bg;
+  border: $button-secondary-border-color;
+  
+  
+}
+
 .button--pill{
   background: transparent;
   border: 1px solid $button-pill-color;
