@@ -1,37 +1,35 @@
 import expect from 'expect'
+import { Meteor } from 'meteor/meteor'
+import { validateNewUser } from './users'
 
-const add = (a, b) =>{
-  
-  if(typeof b !== 'number'){
-    return a + a 
-  }
-  
-    return a + b
+if(Meteor.isServer) {
+
+  describe('Users', function() {
+    it('Should allow valid email address', function(){
+      const testUser = {
+        emails: [
+          {
+            address: "example@test.com"
+          }
+        ]
+      }
+      const res = validateNewUser(testUser)
+      
+      expect(res).toBe(true)
+    })
+    it('Should reject invalid email', function(){
+      const testUser = {
+        emails: [
+          {
+            address: "exampletest.com"
+          }
+        ]
+      }
+      
+      expect(() => {
+        validateNewUser(testUser)
+      }).toThrow()
+    })
+  })
+
 }
-
-const square = a => a * a
-
-describe('Add', function() {
-  
-  it('Should Add Two Numbers', function () {
-    const res = add(11,9)
-    
-    expect(res).toBe(20)
-  })
-  
-  it('Should double a single number', function() {
-    const res = add(6)
-    
-    expect(res).toBe(12)
-  })
-
-})
-
-describe('Square', function () {
-  it('Should square a number', function(){
-    const res = square(8)
-    
-    expect(res).toBe(64)
-  })
-})
-
