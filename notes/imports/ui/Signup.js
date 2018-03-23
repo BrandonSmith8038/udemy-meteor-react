@@ -2,8 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Accounts } from 'meteor/accounts-base'
 import { Link } from 'react-router'
+import { createContainer } from 'meteor/react-meteor-data'
 
-export default class Signup extends React.Component{
+export class Signup extends React.Component{
   constructor(props){
     super(props)
     
@@ -22,7 +23,7 @@ export default class Signup extends React.Component{
       return this.setState({error: 'Password Must Be More Then Six Characters Long' })
     }
     
-    Accounts.createUser({
+    this.props.createUser({
       email,
       password
     }, err => {
@@ -37,9 +38,7 @@ export default class Signup extends React.Component{
         <div className="boxed-view__box">
           <h1>Join</h1>
           
-          <p>{this.state.count}</p>
-          
-          {this.state.error ? <p>{this.state.error}</p> : undefined}
+          {this.state.error ? <p className='error-msg'>{this.state.error}</p> : undefined}
           
           <form className="boxed-view__form">
             <input type="email" ref="email" name="email" placeholder="Email" noValidate/>
@@ -58,3 +57,13 @@ export default class Signup extends React.Component{
     )
   }
 }
+
+Signup.propTypes = {
+  createUser: React.PropTypes.func.isRequired
+}
+
+export default createContainer(() => {
+  return {
+    createUser: Accounts.createUser
+  }
+}, Signup)
