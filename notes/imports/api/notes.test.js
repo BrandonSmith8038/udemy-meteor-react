@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor' 
 import expect from 'expect'
 import { Notes } from './notes'
+import moment from 'moment'
 
 if(Meteor.isServer){
   
@@ -33,7 +34,7 @@ if(Meteor.isServer){
         const userId = 'testId'
         const _id = Meteor.server.method_handlers['notes.insert'].apply({ userId })
         
-        expect(Notes.findOne({ _id, userId })).toBeTruthy()
+        expect(Notes.findOne({ _id, userId })).toExist()
       })
       
       it('Should not insert not if not authenticated', function() {
@@ -49,7 +50,7 @@ if(Meteor.isServer){
       it('Should remove note', function() {
         Meteor.server.method_handlers['notes.remove'].apply({ userId: note1.userId }, [note1._id])
         
-        expect(Notes.findOne({ _id: note1._id })).toBeUndefined()
+        expect(Notes.findOne({ _id: note1._id })).toNotExist()
       })
       
       it('Should not remove if unauthenticated', function(){
@@ -79,12 +80,16 @@ if(Meteor.isServer){
           ])
         
         const note = Notes.findOne(note1._id)
+        const updatedAt = note.updatedAt
         
-        expect(note).toMatchObject({
+        expect(note.updatedAt).toBeGreaterThan(0);
+        expect(note).toEqual({
+          _id: note1._id,
           title,
-          body: note1.body
-        })
-        expect(note.updatedAt).toBeGreaterThan(0)
+          body: note1.body,
+          userId: note1.userId,
+          updatedAt
+        });
       })
       
       it('Should Throw An Error if Extra Updates', function(){
