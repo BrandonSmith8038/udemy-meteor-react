@@ -2,9 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Meteor } from 'meteor/meteor'
 import { Link } from 'react-router'
+import { createContainer } from 'meteor/react-meteor-data'
 
 
-export default class Login extends React.Component{
+export class Login extends React.Component{
   constructor(props){
     super(props)
     
@@ -19,7 +20,7 @@ export default class Login extends React.Component{
     const email = this.refs.email.value.trim()
     const password = this.refs.password.value.trim()
     
-    Meteor.loginWithPassword({email},password, (err) => {
+    this.props.loginWithPassword({email},password, (err) => {
      err ? this.setState({error: 'Unable To Login Check Email and Password'}) : this.setState({error:''})
     })
   }
@@ -32,7 +33,7 @@ export default class Login extends React.Component{
           
           <p>{this.state.count}</p>
           
-          {this.state.error ? <p>{this.state.error}</p> : undefined}
+          {this.state.error ? <p className='error-msg'>{this.state.error}</p> : undefined}
           
           <form className="boxed-view__form">
             <input type="email" ref="email" name="email" placeholder="Email" noValidate/>
@@ -51,3 +52,13 @@ export default class Login extends React.Component{
     )
   }
 }
+
+Login.propTypes = {
+  loginWithPassword: React.PropTypes.func.isRequired
+}
+
+export default createContainer(() => {
+  return {
+    loginWithPassword: Meteor.loginWithPassword
+  }
+}, Login)
