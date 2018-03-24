@@ -16,6 +16,10 @@ export const NoteListHeader = (props) => {
   )
 }
 
+NoteListHeader.propType = {
+  meteorCall: React.PropTypes.func.isRequired
+}
+
 export default createContainer(() => {
   return {
     meteorCall: Meteor.call
