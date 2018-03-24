@@ -3,6 +3,7 @@ import moment from 'moment'
 import { Session } from 'meteor/session'
 import { createContainer } from 'meteor/react-meteor-data'
 
+
 export const NoteListItem = props => {
   return (
     <div onClick={() => props.Session.set('selectedNoteId', props.note._id)}>
