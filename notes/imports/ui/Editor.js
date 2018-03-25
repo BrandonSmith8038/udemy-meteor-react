@@ -54,7 +54,7 @@ export class Editor extends React.Component {
   render(){
     if(this.props.note){
       return(
-        <div>
+        <div className="editor">
           <input 
             value={this.state.title}
             placeholder='Note Title'
@@ -75,7 +75,11 @@ export class Editor extends React.Component {
         </div>
       )
     } else {
-       return this.props.selectedNoteId ? <p>Note Not Found</p> : <p>Pick Or Create A Note To Get Started</p>
+       return (
+        <div className="editor">
+          {this.props.selectedNoteId ? <p>Note Not Found</p> : <p>Pick Or Create Note To Get Started</p>}
+        </div>
+        )
     }
     
   }

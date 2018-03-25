@@ -1,5 +1,6 @@
 .page-content {
   display: flex;
+  height: ;
   margin: 0 auto;
   max-width: $site-max-width;
   padding: $space;
@@ -10,5 +11,6 @@
 }
 
 .page-content__main {
+  display: flex;
   width: $page-content-main-width;
 }
