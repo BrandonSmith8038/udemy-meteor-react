@@ -39,7 +39,13 @@ export default createContainer(() => {
   return {
     // Take notes add selected property to object
     // Set to true if match, false if not
-    notes: Notes.find().fetch().map((note) => {
+    notes: Notes.find({},
+    {
+      sort: 
+      {
+        updatedAt: -1
+      }
+    }).fetch().map((note) => {
       return {
         ...note,
         selected: note._id === selectedNoteId 
