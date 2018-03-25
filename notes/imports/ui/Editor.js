@@ -44,12 +44,10 @@ export class Editor extends React.Component {
     const prevNoteId = prevProps.note ? prevProps.note._id : undefined
     
     if(currentNoteId && currentNoteId !== prevNoteId){
-      this.setState(
-        {
-          title: this.props.note.title,
-          body: this.props.note.body
-        }
-        )
+      this.setState({
+        title: this.props.note.title,
+        body: this.props.note.body
+      })
     }
   }
   
