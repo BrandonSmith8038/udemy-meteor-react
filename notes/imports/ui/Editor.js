@@ -5,6 +5,7 @@ import React from 'react'
 import { Session } from 'meteor/session'
 import { createContainer } from 'meteor/react-meteor-data'
 import { Notes } from '../api/notes'
+import { browserHistory } from 'react-router'
 import { Meteor } from 'meteor/meteor'
 
 
@@ -31,6 +32,11 @@ export class Editor extends React.Component {
     
     this.setState({ title })
     this.props.call('notes.update', this.props.note._id, { title })
+  }
+  
+  handleRemoval(){
+    this.props.call('notes.remove',this.props.note._id)
+    this.props.browserHistory.push('/dashboard')
   }
   
   componentDidUpdate(prevProps, prevState){
@@ -62,7 +68,12 @@ export class Editor extends React.Component {
             onChange={this.handleBodyChange.bind(this)}
           >
           </textarea>
-          <button className='button'>Delete Note</button>
+          <button 
+            className='button'
+            onClick={this.handleRemoval.bind(this)}
+          >
+            Delete Note
+          </button>
         </div>
       )
     } else {
@@ -74,7 +85,9 @@ export class Editor extends React.Component {
 
 Editor.propTypes = {
   note: React.PropTypes.object,
-  selectedNoteId: React.PropTypes.string
+  selectedNoteId: React.PropTypes.string,
+  call: React.PropTypes.func.isRequired,
+  browserHistory: React.PropTypes.object.isRequired
 }
 
 export default createContainer(() => {
@@ -83,6 +96,7 @@ export default createContainer(() => {
   return {
     selectedNoteId,
     note: Notes.findOne(selectedNoteId),
-    call: Meteor.call
+    call: Meteor.call,
+    browserHistory
   }
 }, Editor)
