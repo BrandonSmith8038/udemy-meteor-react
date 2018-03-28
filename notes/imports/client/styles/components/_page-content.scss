@@ -3,16 +3,29 @@
   height: $page-content-height;
   margin: 0 auto;
   max-width: $site-max-width;
-  padding: $large-space $space;
 }
 
 .page-content__sidebar {
-  display: flex;
-  padding-right: $large-space;
+  display: none;
+  padding-right: #large-space;
   width: $page-content-side-bar-width;
 }
 
 .page-content__main {
   display: flex;
-  width: $page-content-main-width;
+  width: 100%;
+}
+
+@include desktop {
+  .page-content {
+    padding: $space;
+  }
+  
+  .page-content__sidebar {
+    display: flex;
+  }
+  
+  .page-content__main {
+    width: $page-content-main-width;
+  }
 }
